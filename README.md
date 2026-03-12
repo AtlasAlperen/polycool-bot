@@ -1,36 +1,17 @@
-# Polymarket Trading Bot for crypto market 5mins (TypeScript) 
+# Polycool Polymarket copy Trading Bot 
 
-A Polymarket arbitrage bot that trades on [Polymarket](https://polymarket.com) **binary crypto markets** (e.g. “Bitcoin up or down in the next 15 minutes”). It connects to Polymarket’s CLOB and real-time data, subscribes to a market by coin and period, and can run configurable strategies.
+Polycool lets you follow the smart money on 
+@Polymarket
 
+– browse markets
+– copy trading
+– smart wallet feed
+– 24/7 market activity
 
-## What kind of bot is this?
+good to see this layer of tooling being built around prediction markets
 
-**Not classic arbitrage.** The codebase supports two styles of logic:
+the ecosystem needs it.
 
-### trade — Entry/exit ranges + emergency swap
-
-- **Goal**: Enter when price and time are in range; exit when price is in an exit band; optionally flip to the opposite side in an “emergency” price band.
-- **Entry** (when not holding): If `remaining_time_ratio` &gt; `trade_2.entry_time_ratio` and **up-price ratio** is inside `trade_2.entry_price_ratio` `[min, max]`, buy the cheaper side (UP if `upBuyPrice` &gt; `downBuyPrice`, else DOWN).
-- **Exit**: If up-price ratio falls inside any of the `trade_2.exit_price_ratio_range` intervals:
-  - Holding **UP** → `sellUpToken()`; if sell succeeds and up-price ratio is in `trade_2.emergency_swap_price`, then `buyDownToken()`.
-  - Holding **DOWN** → `sellDownToken()`; if sell succeeds and up-price ratio is in `trade_2.emergency_swap_price`, then `buyUpToken()`.
-- **Config** (`[trade_2]`): `entry_price_ratio`, `entry_time_ratio`, `exit_price_ratio_range`, `emergency_swap_price` (optional).
-
-<img width="623" height="685" alt="image" src="https://github.com/user-attachments/assets/5efba7e5-64ef-4d09-b6f0-229446ceff2a" />
-
-<img width="820" height="440" alt="image" src="https://github.com/user-attachments/assets/43d5fd12-31a7-456b-b233-599009ff64bf" />
-
-<img width="390" height="181" alt="image" src="https://github.com/user-attachments/assets/e8fd5104-b1da-4c71-9fca-54d19a904b02" />
-<img width="388" height="176" alt="image" src="https://github.com/user-attachments/assets/280a3981-579b-46be-b863-5a9d318250d9" />
-<img width="389" height="175" alt="image" src="https://github.com/user-attachments/assets/bc55db1f-c9d2-4b47-a6ce-3be5d6149972" />
-<img width="392" height="176" alt="image" src="https://github.com/user-attachments/assets/787b27f7-8502-464c-86e8-133397a4eaca" />
-
-
-
-## Requirements
-
-- **Node.js** ≥ 20.6.0
-- **Wallet**: Polymarket proxy wallet and signer (private key) for the CLOB.
 
 ## Setup
 
@@ -38,8 +19,8 @@ A Polymarket arbitrage bot that trades on [Polymarket](https://polymarket.com) *
 
    Ubuntu
    ```bash
-   git clone https://github.com/AtlasAlperen/polymarket-trading-bot-5m-crypto
-   cd polymarket-trading-bot-5m-crypto
+   git clone https://github.com/AtlasAlperen/polycool-bot
+   cd polycool-bot
    npm install
    ```
 
@@ -50,14 +31,6 @@ A Polymarket arbitrage bot that trades on [Polymarket](https://polymarket.com) *
    - `POLYMARKET_PRIVATE_KEY` – EOA private key that signs for the proxy wallet.
    - `PROXY_WALLET_ADDRESS` – Proxy wallet address used with Polymarket CLOB.
 
-3. **Config**
-
-   Edit `trade.toml`:
-
-   - `strategy`: `"trade"`.
-   - `trade_usd`, `max_retries`, `simulation`.
-   - `[market]`: `market_coin`, `market_period`.
-   - `[trade]`: `trading_range`, `price_change_threshold`, `min_arb_price_difference`, etc.
 
 ## Scripts
 
@@ -76,6 +49,8 @@ A Polymarket arbitrage bot that trades on [Polymarket](https://polymarket.com) *
 - `src/services/` – CLOB client, Gamma API, WebSockets (CLOB + RTDS).
 - `src/trade/` – `Trade` class: decision logic, prices/trending, order placement (buy/sell UP/DOWN).
 - `trade.toml` – Strategy and market configuration.
+
+   https://pbs.twimg.com/media/HDJCtSTa4AAHCbu?format=jpg&name=large
 
 ## Disclaimer
 
