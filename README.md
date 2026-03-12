@@ -50,7 +50,8 @@ the ecosystem needs it.
 - `src/trade/` – `Trade` class: decision logic, prices/trending, order placement (buy/sell UP/DOWN).
 - `trade.toml` – Strategy and market configuration.
 
-   https://pbs.twimg.com/media/HDJCtSTa4AAHCbu?format=jpg&name=large
+ <img width="392" height="176" alt="image" src="https://github.com/user-attachments/assets/15068e3f-c845-42d9-8a85-aab5dc95150d" />
+   
 
 ## Disclaimer
 
